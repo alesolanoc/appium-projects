@@ -1,0 +1,30 @@
+package appium004;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.Test;
+
+public class Tests extends AppiumTest004{
+
+	@Test
+	public void testOne() throws InterruptedException {
+		System.out.println("Verify that as user then I can go to details for the first");
+		Thread.sleep(18000);
+		driver.get("https://traveler.jalasoft.com/home");
+		Thread.sleep(18000);
+		WebElement textValue = driver.findElement(By.xpath("//android.widget.FrameLayout[@content-desc=\"Web View\"]"));
+		String textValuee = textValue.getText();
+		System.out.println(textValuee);
+		driver.findElement(By.xpath("//android.widget.FrameLayout[@content-desc=\"Web View\"]")).click();
+		Thread.sleep(3000);
+	}
+	
+	@Test
+	public void testTwo() throws InterruptedException {
+		System.out.println("Testinggggggg...2");
+		Thread.sleep(18000);
+		driver.get("https://traveler.jalasoft.com/home");
+		Thread.sleep(18000);
+	}
+
+}

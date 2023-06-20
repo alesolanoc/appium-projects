@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-02-03T13:15:24 GMT-04:00" name="Default suite" finished-at="2023-02-03T13:16:51 GMT-04:00" duration-ms="86080">
+    <groups>
+    </groups>
+    <test started-at="2023-02-03T13:15:24 GMT-04:00" name="Default test" finished-at="2023-02-03T13:16:51 GMT-04:00" duration-ms="86080">
+      <class name="appium006.Tests">
+        <test-method is-config="true" signature="setup()[pri:0, instance:appium006.Tests@32eff876]" started-at="2023-02-03T13:15:24 GMT-04:00" name="setup" finished-at="2023-02-03T13:15:34 GMT-04:00" duration-ms="10044" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="scrollUpDown()[pri:0, instance:appium006.Tests@32eff876]" started-at="2023-02-03T13:15:35 GMT-04:00" name="scrollUpDown" finished-at="2023-02-03T13:15:50 GMT-04:00" duration-ms="15954" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- scrollUpDown -->
+        <test-method signature="testOne()[pri:0, instance:appium006.Tests@32eff876]" started-at="2023-02-03T13:15:50 GMT-04:00" name="testOne" finished-at="2023-02-03T13:16:11 GMT-04:00" duration-ms="20348" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testOne -->
+        <test-method signature="testTree()[pri:0, instance:appium006.Tests@32eff876]" started-at="2023-02-03T13:16:11 GMT-04:00" name="testTree" finished-at="2023-02-03T13:16:31 GMT-04:00" duration-ms="20047" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testTree -->
+        <test-method signature="testTwo()[pri:0, instance:appium006.Tests@32eff876]" started-at="2023-02-03T13:16:31 GMT-04:00" name="testTwo" finished-at="2023-02-03T13:16:50 GMT-04:00" duration-ms="19098" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testTwo -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:appium006.Tests@32eff876]" started-at="2023-02-03T13:16:50 GMT-04:00" name="teardown" finished-at="2023-02-03T13:16:51 GMT-04:00" duration-ms="532" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- appium006.Tests -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

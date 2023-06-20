@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-02-21T21:21:47 GMT-04:00" name="Default suite" finished-at="2023-02-21T21:22:45 GMT-04:00" duration-ms="57666">
+    <groups>
+    </groups>
+    <test started-at="2023-02-21T21:21:47 GMT-04:00" name="Default test" finished-at="2023-02-21T21:22:45 GMT-04:00" duration-ms="57666">
+      <class name="appium010.Tests">
+        <test-method is-config="true" signature="setup()[pri:0, instance:appium010.Tests@1d2adfbe]" started-at="2023-02-21T21:21:47 GMT-04:00" name="setup" finished-at="2023-02-21T21:21:59 GMT-04:00" duration-ms="11424" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testTwelve()[pri:0, instance:appium010.Tests@1d2adfbe]" started-at="2023-02-21T21:21:59 GMT-04:00" name="testTwelve" finished-at="2023-02-21T21:22:44 GMT-04:00" duration-ms="44976" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testTwelve -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:appium010.Tests@1d2adfbe]" started-at="2023-02-21T21:22:44 GMT-04:00" name="teardown" finished-at="2023-02-21T21:22:45 GMT-04:00" duration-ms="1225" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- appium010.Tests -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

@@ -1,0 +1,43 @@
+package appium006;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
+
+import io.appium.java_client.MobileBy;
+
+public class Tests extends AppiumTest006{
+	String desiertoUyuni = "desierto de Sal";
+			
+	
+	@Test
+	public void testOne() throws InterruptedException {
+		System.out.println("Verify that as user then I can go to details for the first suggestion");
+		Thread.sleep(4000);
+		driver.get("https://traveler.jalasoft.com/home");
+		Thread.sleep(4000);
+//        driver.findElement(By.linkText(desiertoUyuni)).click();
+//		Thread.sleep(10000);
+//        driver.findElement(By.linkText("El desierto de Sal más grande del Mundo Walk 5:30Download")).click();
+//		Thread.sleep(10000);
+//        driver.findElement(By.xpath("//i[@class=\"left chevron large icon inverted cursor\"]")).click();
+//		Thread.sleep(10000);
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[contains(@text,desiertoUyuni)]")));
+		driver.findElement(By.xpath("//android.view.View[contains(@text,desiertoUyuni)]"));
+		driver.findElement(By.xpath("//android.view.View[contains(@text,desiertoUyuni)]")).click();
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[contains(@text,desiertoUyuni)]")));
+
+//		driver.findElement(By.linkText(desiertoUyuni)).click();
+        Thread.sleep(3000);
+  //      new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfElementLocated(By.partialLinkText("Al suroeste de Bolivia")));
+//	    driver.findElement(By.partialLinkText("Al suroeste de Bolivia")).click();
+	//    Thread.sleep(18000);
+        driver.findElement(By.xpath("//i[@class=\"left chevron large icon inverted cursor\"]")).click();
+        Thread.sleep(3000);
+
+	}
+	
+}

@@ -1,0 +1,17 @@
+package appium004;
+
+import org.testng.annotations.Test;
+
+public class Tests extends AppiumTest004{
+
+	@Test
+	public void testOne() {
+		System.out.println("Testinggggggg...1");
+	}
+	
+	@Test
+	public void testTwo() {
+		System.out.println("Testinggggggg...2");
+	}
+
+}

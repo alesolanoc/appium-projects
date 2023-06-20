@@ -1,0 +1,13 @@
+package appium004;
+
+public class Tests extends AppiumTest004{
+
+	public void testOne() {
+		System.out.println("Testinggggggg...1");
+	}
+	
+	public void testTwo() {
+		System.out.println("Testinggggggg...2");
+	}
+
+}

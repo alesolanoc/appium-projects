@@ -1,0 +1,510 @@
+package appium011;
+
+import appium011.AppiumTest011;
+
+import java.awt.Dimension;
+import java.awt.Point;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBuffer;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.time.Duration;
+
+import javax.imageio.ImageIO;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.io.FileHandler;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.utils.FileUtil;
+import com.google.common.collect.ImmutableMap;
+
+import Pages.DetailPage;
+import Pages.MainPage;
+import Pages.SearchPage;
+import Tools.Tools;
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
+
+public class Tests extends AppiumTest011{
+/*	@Test
+	public void testOne() throws InterruptedException {
+		MainPage mainPage = new MainPage(driver);
+		
+		ExtentTest test1 = extent.createTest("Test1","Verify that search text box is displayed with Looking for a new adventure? label");
+		test1.log(Status.INFO, "Test one started");
+		Thread.sleep(3000);
+		String textToFind = "Looking for a new adventure?";
+		Boolean elementNot = mainPage.getElementIsDisplayed(textToFind);
+		if (elementNot == false) {
+   			test1.log(Status.FAIL,"assertion find "+textToFind+" failed");
+   		}
+   		else {
+   			test1.log(Status.PASS,"assertion find "+textToFind+" passed");
+   		}
+		Thread.sleep(3000);
+		test1.log(Status.INFO, "Test one Finished");
+	}
+
+	@Test
+	public void testTwo() throws InterruptedException {
+		MainPage mainPage = new MainPage(driver);
+		
+		ExtentTest test2 = extent.createTest("Test2","Verify that Trending label is displayed");
+		test2.log(Status.INFO, "Test two started");
+		Thread.sleep(3000);
+		String textToFind = "Trending";
+		Boolean elementNot = mainPage.getElementIsDisplayed(textToFind);
+		if (elementNot == false) {
+   			test2.log(Status.FAIL,"assertion find "+textToFind+" failed");
+   		}
+   		else {
+   			test2.log(Status.PASS,"assertion find "+textToFind+" passed");
+   		}
+		Thread.sleep(3000);
+		test2.log(Status.INFO, "Test two Finished");
+	}
+	
+	@Test
+	public void testThree() throws InterruptedException {
+		MainPage mainPage = new MainPage(driver);
+		
+		ExtentTest test3 = extent.createTest("Test3","Verify that Traveler label is displayed");
+		test3.log(Status.INFO, "Test three started");
+		Thread.sleep(3000);
+		String textToFind = "Traveler";
+		Boolean elementNot = mainPage.getElementImageIsDisplayed(textToFind);
+		if (elementNot == false) {
+   			test3.log(Status.FAIL,"assertion find "+textToFind+" failed");
+   		}
+   		else {
+   			test3.log(Status.PASS,"assertion find "+textToFind+" passed");
+   		}
+		Thread.sleep(3000);
+		test3.log(Status.INFO, "Test three Finished");
+	}
+
+	@Test
+	public void testFour() throws InterruptedException {
+		MainPage mainPage = new MainPage(driver);
+		
+		ExtentTest test4 = extent.createTest("Test4","Verify that More Tour Packs label is displayed");
+		test4.log(Status.INFO, "Test four started");
+		Thread.sleep(3000);
+		String textToFind = "More Tour Packs";
+		Boolean elementNot = mainPage.getElementIsDisplayed(textToFind);
+		if (elementNot == false) {
+   			test4.log(Status.FAIL,"assertion find "+textToFind+" failed");
+   		}
+   		else {
+   			test4.log(Status.PASS,"assertion find "+textToFind+" passed");
+   		}
+		Thread.sleep(3000);
+		test4.log(Status.INFO, "Test four Finished");
+	}
+
+	@Test
+	public void testFive() throws InterruptedException {
+		MainPage mainPage = new MainPage(driver);
+		
+		ExtentTest test5 = extent.createTest("Test5","Verify that SEE ALL label is displayed");
+		test5.log(Status.INFO, "Test five started");
+		Thread.sleep(3000);
+		String textToFind = "SEE ALL";
+		Boolean elementNot = mainPage.getElementIsDisplayed(textToFind);
+		if (elementNot == false) {
+   			test5.log(Status.FAIL,"assertion find "+textToFind+" failed");
+   		}
+   		else {
+   			test5.log(Status.PASS,"assertion find "+textToFind+" passed");
+   		}
+		Thread.sleep(3000);
+		test5.log(Status.INFO, "Test five Finished");
+	}
+
+	@Test
+	public void testSix() throws InterruptedException {
+		MainPage mainPage = new MainPage(driver);
+		SearchPage searchPage = new SearchPage(driver,"");
+		
+		ExtentTest test6 = extent.createTest("Test6","Verify that its able to search by search input box");
+		test6.log(Status.INFO, "Test six started");
+		Thread.sleep(3000);
+		String textToFind = "Looking for a new adventure?";
+		Boolean elementNot = mainPage.getElementIsDisplayed(textToFind);
+		if (elementNot == false) {
+   			test6.log(Status.FAIL,"assertion find "+textToFind+" failed");
+   		}
+   		else {
+   			test6.log(Status.PASS,"assertion find "+textToFind+" passed");
+   		}
+		Thread.sleep(3000);
+		mainPage.clickOverSearchInputBox();
+		Thread.sleep(3000);
+		searchPage.sendTextFieldToSearchInputBox("Text to search");
+		searchPage.pressDoneAfterFilledText();
+		Thread.sleep(3000);
+		test6.log(Status.INFO, "Test six Finished");
+	}
+	
+	@Test
+	public void testSeven() throws InterruptedException {
+		MainPage mainPage = new MainPage(driver);
+		SearchPage searchPage = new SearchPage(driver,"");
+		
+		ExtentTest test7 = extent.createTest("Test7","Verify that its able to search by search input box and transportation by any option");
+		test7.log(Status.INFO, "Test seven started");
+		Thread.sleep(3000);
+		String textToFind = "Looking for a new adventure?";
+		Boolean elementNot = mainPage.getElementIsDisplayed(textToFind);
+		if (elementNot == false) {
+   			test7.log(Status.FAIL,"assertion find "+textToFind+" failed");
+   		}
+   		else {
+   			test7.log(Status.PASS,"assertion find "+textToFind+" passed");
+   		}
+		Thread.sleep(3000);
+		mainPage.clickOverSearchInputBox();
+		Thread.sleep(3000);
+		searchPage.sendTextFieldToSearchInputBox("Text to search");
+		searchPage.pressDoneAfterFilledText();
+		Thread.sleep(3000);
+		searchPage.pressTransportationOption();
+		Thread.sleep(3000);
+		searchPage.selectAnyTransportationOption();
+		Thread.sleep(3000);
+		test7.log(Status.INFO, "Test seven Finished");
+	}
+	
+	@Test
+	public void testEight() throws IOException, InterruptedException {
+		MainPage mainPage = new MainPage(driver);
+		SearchPage searchPage = new SearchPage(driver,"");
+		Tools tools = new Tools();
+		String pathToLogo = System.getProperty("user.dir") + "\\src\\main\\java\\Screenshots\\logoApp.png";
+		
+		ExtentTest test8 = extent.createTest("Test8","Verify that Traveler logo is displayed at top and displayed as designed");
+		test8.log(Status.INFO, "Test eight started");
+		File scrfile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileHandler.copy(scrfile, new File("screen.jpg"));
+		By locator = By.id("com.jalasoft.travelerapp:id/iv_header");
+	    final byte[] srcImage = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+	    final BufferedImage screenshot = ImageIO.read(new ByteArrayInputStream(srcImage));
+   	    final WebElement element = driver.findElement(locator);
+   	    final org.openqa.selenium.Point elementLocation = element.getLocation();
+   	    final org.openqa.selenium.Dimension elementSize = element.getSize();
+   	    BufferedImage scr = screenshot.getSubimage(elementLocation.x, elementLocation.y,elementSize.width, elementSize.height);
+   	    File imgfile = new File("screenshot.png");
+   	    ImageIO.write(scr, "png", imgfile);
+   	    if (tools.verifyImage("screenshot.png",pathToLogo) == false) {
+   			test8.log(Status.FAIL,"assertion find Images are not same, failed");
+   		}
+   		else {
+   			test8.log(Status.PASS,"assertion find Images are same, passed");
+   		}
+		Thread.sleep(3000);
+		test8.log(Status.INFO, "Test eight Finished");
+	}
+
+	@Test
+	public void testNine() throws IOException, InterruptedException {
+		MainPage mainPage = new MainPage(driver);
+		SearchPage searchPage = new SearchPage(driver,"");
+		Tools tools = new Tools();
+		String pathToLogo = System.getProperty("user.dir") + "\\src\\main\\java\\Screenshots\\firstTrending.png";
+		
+		ExtentTest test9 = extent.createTest("Test9","Verify that picture of a tour pack is displayed in first trending");
+		test9.log(Status.INFO, "Test nine started");
+		Thread.sleep(3000);
+		File scrfile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileHandler.copy(scrfile, new File("screen.jpg"));
+		By locator = By.id("com.jalasoft.travelerapp:id/iv_trending");
+	    final byte[] srcImage = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+	    final BufferedImage screenshot = ImageIO.read(new ByteArrayInputStream(srcImage));
+   	    final WebElement element = driver.findElement(locator);
+   	    final org.openqa.selenium.Point elementLocation = element.getLocation();
+   	    final org.openqa.selenium.Dimension elementSize = element.getSize();
+   	    BufferedImage scr = screenshot.getSubimage(elementLocation.x, elementLocation.y,elementSize.width, elementSize.height);
+   	    File imgfile = new File("screenshot.png");
+   	    ImageIO.write(scr, "png", imgfile);
+		if (tools.verifyImage("screenshot.png",pathToLogo) == false) {
+   			test9.log(Status.FAIL,"assertion find Images are not same, failed");
+   		}
+   		else {
+   			test9.log(Status.PASS,"assertion find Images are same, passed");
+   		}
+		Thread.sleep(3000);
+		test9.log(Status.INFO, "Test nine Finished");
+	}
+
+	@Test
+	public void testTen() throws IOException, InterruptedException {
+		MainPage mainPage = new MainPage(driver);
+		SearchPage searchPage = new SearchPage(driver,"");
+		
+		ExtentTest test10 = extent.createTest("Test10","Verify that short description of a tour pack is displayed in first trending");
+		test10.log(Status.INFO, "Test ten started");
+		Thread.sleep(3000);
+		String textToFind = "Paseo por el Salar de Uyuni";
+		Boolean elementNot = mainPage.getElementIsDisplayed(textToFind);
+		if (elementNot == false) {
+			test10.log(Status.FAIL,"assertion find "+textToFind+" failed");
+   		}
+   		else {
+   			test10.log(Status.PASS,"assertion find "+textToFind+" passed");
+   		}
+		Thread.sleep(3000);
+		test10.log(Status.INFO, "Test ten Finished");
+	}
+
+	@Test
+	public void testEleven() throws IOException, InterruptedException {
+		MainPage mainPage = new MainPage(driver);
+		SearchPage searchPage = new SearchPage(driver,"");
+		
+		ExtentTest test11 = extent.createTest("Test11","Verify that large description of a tour pack is displayed in first trending");
+		test11.log(Status.INFO, "Test elven started");
+		Thread.sleep(3000);
+		String textToFind = "El Salar de Uyuni, en medio de los Andes en el sur de Bolivia, es la salina más grande del mundo. Es el legado de un lago prehistórico que se secó y dejó un paisaje desértico de casi 11,000 km cuadrados de sal blanca brillante, formaciones rocosas e islas con cactus.";
+		Boolean elementNot = mainPage.getElementIsDisplayed(textToFind);
+		if (elementNot == false) {
+			test11.log(Status.FAIL,"assertion find "+textToFind+" failed");
+   		}
+   		else {
+   			test11.log(Status.PASS,"assertion find "+textToFind+" passed");
+   		}
+		Thread.sleep(3000);
+		test11.log(Status.INFO, "Test elven Finished");
+	}
+	
+	@Test
+	public void testTwelve() throws IOException, InterruptedException {
+		MainPage mainPage = new MainPage(driver);
+		SearchPage searchPage = new SearchPage(driver,"");
+		
+		ExtentTest Test12 = extent.createTest("Test12","Verify that location description of a tour pack is displayed in first trending");
+		Test12.log(Status.INFO, "Test Twelve started");
+		Thread.sleep(3000);
+		String textToFind = "Uyuni";
+		Boolean elementNot = mainPage.getElementIsDisplayed(textToFind);
+		if (elementNot == false) {
+			Test12.log(Status.FAIL,"assertion find "+textToFind+" failed");
+   		}
+   		else {
+   			Test12.log(Status.PASS,"assertion find "+textToFind+" passed");
+   		}
+		Thread.sleep(3000);
+		Test12.log(Status.INFO, "Test Twelve Finished");
+	}
+	
+	@Test
+	public void testThirteen() throws IOException, InterruptedException {
+		MainPage mainPage = new MainPage(driver);
+		SearchPage searchPage = new SearchPage(driver,"");
+		
+		ExtentTest Test13 = extent.createTest("Test13","Verify that rating of a tour pack is displayed in first trending");
+		Test13.log(Status.INFO, "Test Thirteen started");
+		Thread.sleep(3000);
+		String textToFind = "50.0";
+		Boolean elementNot = mainPage.getElementIsDisplayed(textToFind);
+		if (elementNot == false) {
+			Test13.log(Status.FAIL,"assertion find "+textToFind+" failed");
+   		}
+   		else {
+   			Test13.log(Status.PASS,"assertion find "+textToFind+" passed");
+   		}
+		Thread.sleep(3000);
+		Test13.log(Status.INFO, "Test Thirteen Finished");
+	}
+
+	@Test
+	public void testFourteen() throws IOException, InterruptedException {
+		MainPage mainPage = new MainPage(driver);
+		DetailPage detailPage = new DetailPage(driver);
+		
+		ExtentTest Test14 = extent.createTest("Test14","Verify that its able to click over short description of a tour pack that is being displayed in first trending and after that goes to is detail");
+		Test14.log(Status.INFO, "Test Fourteen started");
+		Thread.sleep(3000);
+		String textToFind = "Paseo por el Salar de Uyuni";
+		mainPage.clickElementShortDescIsDisplayed(textToFind);
+		Boolean elementNot = detailPage.getElementIsDisplayedInDetailPage(textToFind);
+		if (elementNot == false) {
+			Test14.log(Status.FAIL,"assertion: Cant click over "+textToFind+" and goes to detail failed");
+   		}
+   		else {
+   			Test14.log(Status.PASS,"assertion: Can click over "+textToFind+" and goes to detail passed");
+   		}
+		Thread.sleep(3000);
+		Test14.log(Status.INFO, "Test Fourteen Finished");
+	}
+	
+	@Test
+	public void testFiveteen() throws IOException, InterruptedException {
+		MainPage mainPage = new MainPage(driver);
+		DetailPage detailPage = new DetailPage(driver);
+		
+		ExtentTest Test15 = extent.createTest("Test15","Verify that its able to click over large description of a tour pack that is being displayed in first trending and after that goes to is detail");
+		Test15.log(Status.INFO, "Test Fiveteen started");
+		Thread.sleep(3000);
+		String textToFind = "El Salar de Uyuni, en medio de los Andes en el sur de Bolivia, es la salina más grande del mundo. Es el legado de un lago prehistórico que se secó y dejó un paisaje desértico de casi 11,000 km cuadrados de sal blanca brillante, formaciones rocosas e islas con cactus.";
+		mainPage.clickElementLargeDescIsDisplayed(textToFind);
+		Boolean elementNot = detailPage.getElementIsDisplayedInDetailPage(textToFind);
+		if (elementNot == false) {
+			Test15.log(Status.FAIL,"assertion: Cant click over "+textToFind+" and goes to detail failed");
+   		}
+   		else {
+   			Test15.log(Status.PASS,"assertion: Can click over "+textToFind+" and goes to detail passed");
+   		}
+		Thread.sleep(3000);
+		Test15.log(Status.INFO, "Test Fiveteen Finished");
+	}
+	
+	@Test
+	public void testSixeteen() throws IOException, InterruptedException {
+		MainPage mainPage = new MainPage(driver);
+		DetailPage detailPage = new DetailPage(driver);
+		
+		ExtentTest Test16 = extent.createTest("Test16","Verify that its able to click over image of a tour pack that is being displayed in first trending and after that goes to is detail");
+		Test16.log(Status.INFO, "Test Sixeteen started");
+		Thread.sleep(3000);
+		String textToFind = "Paseo por el Salar de Uyuni";
+		mainPage.clickElementImageIsDisplayed(textToFind);
+		Boolean elementNot = detailPage.getElementIsDisplayedInDetailPage(textToFind);
+		if (elementNot == false) {
+			Test16.log(Status.FAIL,"assertion: Cant click over "+textToFind+"  image and goes to detail failed");
+   		}
+   		else {
+   			Test16.log(Status.PASS,"assertion: Can click over "+textToFind+" image and goes to detail passed");
+   		}
+		Thread.sleep(3000);
+		Test16.log(Status.INFO, "Test Sixeteen Finished");
+	}
+
+	@Test
+	public void testSeventeen() throws IOException, InterruptedException {
+		MainPage mainPage = new MainPage(driver);
+		DetailPage detailPage = new DetailPage(driver);
+		
+		ExtentTest Test17 = extent.createTest("Test17","Verify that its able to click over short desc of a tour pack that was horizontal scrolled and is being displayed in trending and after that goes to is detail");
+		Test17.log(Status.INFO, "Test Seventeen started");
+		Thread.sleep(3000);
+		String textToFind = "Centros comerciales Santa Cruz";
+		Boolean elementNot = MainPage.goDetailPageFromShortDesc(textToFind);
+		if (elementNot == false) {
+			Test17.log(Status.FAIL,"assertion: Cant go to detail page from right/next in trendings failed");
+   		}
+   		else {
+   			Test17.log(Status.PASS,"assertion: Can go to detail page from right/next in trendings passed");
+   		}
+   		Boolean elementNot1 = detailPage.getElementIsDisplayedInDetailPage(textToFind);
+		if (elementNot1 == false) {
+			Test17.log(Status.FAIL,"assertion2: tuor pack "+textToFind+" is not displayed failed");
+   		}
+   		else {
+   			Test17.log(Status.PASS,"assertion2: tour pack "+textToFind+" is displayed passed");
+   		}
+		Thread.sleep(3000);
+		Test17.log(Status.INFO, "Test Seventeen Finished");
+	}
+
+	@Test
+	public void testEightteen() throws IOException, InterruptedException {
+		MainPage mainPage = new MainPage(driver);
+		DetailPage detailPage = new DetailPage(driver);
+		
+		ExtentTest Test18 = extent.createTest("Test18","Verify that its able to click over large desc of a tour pack that was horizontal scrolled and is being displayed in trending and after that goes to is detail");
+		Test18.log(Status.INFO, "Test Eightteen started");
+		Thread.sleep(3000);
+		String textToFind = "Recorrido por centros comerciales en Santa Cruz";
+		Boolean elementNot = MainPage.goDetailPageFromLargeDesc(textToFind);
+		if (elementNot == false) {
+			Test18.log(Status.FAIL,"assertion: Cant go to detail page from right/next in trending failed");
+   		}
+   		else {
+   			Test18.log(Status.PASS,"assertion: Can go to detail page from right/next in trending passed");
+   		}
+   		Boolean elementNot1 = detailPage.getElementIsDisplayedInDetailPage(textToFind);
+		if (elementNot1 == false) {
+			Test18.log(Status.FAIL,"assertion2: tour pack "+textToFind+" is not displayed failed");
+   		}
+   		else {
+   			Test18.log(Status.PASS,"assertion2: tour pack "+textToFind+" is displayed passed");
+   		}
+		Thread.sleep(3000);
+		Test18.log(Status.INFO, "Test Eightteen Finished");
+	}
+*/
+	@Test
+	public void testNineteen() throws IOException, InterruptedException {
+		MainPage mainPage = new MainPage(driver);
+		DetailPage detailPage = new DetailPage(driver);
+		
+		ExtentTest Test19 = extent.createTest("Test19","Verify that its able to scroll down, click on last tour package and after that goes to is detail");
+		Test19.log(Status.INFO, "Test Nineteen started");
+		Thread.sleep(3000);
+		String textToFind = "Centros comerciales Santa Cruz";
+   		Boolean elementNot = mainPage.scrollDownMainPage(textToFind);
+   		if (elementNot == false) {
+   			Test19.log(Status.FAIL,"assertion1 failed");
+   		}
+   		else {
+   			Test19.log(Status.PASS,"assertion1 passed");
+   		}
+   		Boolean elementNot1 = detailPage.getElementIsDisplayedInDetailPage(textToFind);
+		if (elementNot1 == false) {
+			Test19.log(Status.FAIL,"assertion2: Cant click over "+textToFind+" and goes to detail");
+   		}
+   		else {
+   			Test19.log(Status.PASS,"assertion2: Can click over "+textToFind+" and goes to detail");
+   		}
+		Thread.sleep(3000);
+		Test19.log(Status.INFO, "Test Nineteen Finished");
+	}
+/*
+	@Test
+	public void testTwenty() throws InterruptedException {
+		MainPage mainPage = new MainPage(driver);
+		DetailPage detailPage = new DetailPage(driver);
+		SearchPage searchPage = new SearchPage(driver,"Centros comerciales Santa Cruz");
+		
+		ExtentTest test20 = extent.createTest("test20","Verify that its able to search by search input box, click over record that matches the search criteria and goes to detail page");
+		test20.log(Status.INFO, "Test Twenty started");
+		Thread.sleep(3000);
+		String textToFind = "Looking for a new adventure?";
+		Boolean elementNot = mainPage.getElementIsDisplayed(textToFind);
+		if (elementNot == false) {
+			test20.log(Status.FAIL,"assertion find "+textToFind+" failed");
+   		}
+   		else {
+   			test20.log(Status.PASS,"assertion find "+textToFind+" passed");
+   		}
+		Thread.sleep(3000);
+		mainPage.clickOverSearchInputBox();
+		Thread.sleep(3000);
+		textToFind = "Centros comerciales Santa Cruz";
+		searchPage.sendTextFieldToSearchInputBox(textToFind);
+		searchPage.pressDoneAfterFilledText();
+		Thread.sleep(3000);
+		searchPage.clickElementShortDescIsDisplayedinSearchPage();
+		Thread.sleep(3000);
+		Boolean elementNot1 = detailPage.getElementIsDisplayedInDetailPage(textToFind);
+		if (elementNot1 == false) {
+			test20.log(Status.FAIL,"assertion: Cant click over "+textToFind+" and goes to detail failed");
+   		}
+   		else {
+   			test20.log(Status.PASS,"assertion: Can click over "+textToFind+" and goes to detail passed");
+   		}
+
+		test20.log(Status.INFO, "Test Twenty Finished");
+	}
+*/	
+}

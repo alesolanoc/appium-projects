@@ -1,0 +1,52 @@
+package appium006;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.AndroidMobileCapabilityType;
+
+public class AppiumTest006 {
+	
+	AndroidDriver driver;
+	@BeforeTest
+	public void setup() throws MalformedURLException {
+		DesiredCapabilities caps = new DesiredCapabilities();
+		caps.setCapability("automationName", "Appium");
+		caps.setCapability("platformName", "Android");
+		caps.setCapability("deviceName", "09011FDD40022V");
+		caps.setCapability("platformVersion", "13.0");
+		caps.setCapability(AndroidMobileCapabilityType.APP_PACKAGE,"com.android.chrome");
+		caps.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY,"com.google.android.apps.chrome.Main");
+		caps.setCapability("chromedriverExecutable","C:\\platform-tools\\chromedriver_win32_109version_supportedforpixel\\chromedriver.exe");
+		caps.setCapability("noReset", true);
+		
+		URL url=new URL("http://127.0.0.1:4723/wd/hub");
+		driver=new AndroidDriver(url,caps);
+
+	}
+	
+	@Test //scroll down
+	public void sampleTest() throws InterruptedException {
+		System.out.println("Testinggggggg...");
+		Thread.sleep(18000);
+		driver.get("https://traveler.jalasoft.com/home");
+		Thread.sleep(18000);
+//		JavascriptExecutor js_down = (JavascriptExecutor) driver;
+	//	js_down.executeScript("window.scrollBy(0,1000)", "");
+		//Thread.sleep(18000);
+	}
+	
+	@AfterTest
+	public void teardown() {
+		driver.close();
+		driver.quit();
+	}
+
+}

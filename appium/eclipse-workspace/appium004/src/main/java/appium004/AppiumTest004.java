@@ -1,0 +1,50 @@
+//Automation framework for traveler app with setup / test / teardown in a emulator
+package appium004;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import io.appium.java_client.android.AndroidDriver;
+
+public class AppiumTest004 {
+
+	AndroidDriver driver;
+	@BeforeTest
+	public void setup() throws MalformedURLException {
+		DesiredCapabilities caps = new DesiredCapabilities();
+		caps.setCapability("automationName", "Appium");
+		caps.setCapability("platformName", "Android");
+		caps.setCapability("deviceName", "sdk_gphone64_x86_64");
+		caps.setCapability("platformVersion", "12.0");
+		caps.setCapability("UDID", "emulator-5554");
+		caps.setCapability("browserName", "Chrome");
+		caps.setCapability("chromedriverExecutable","C:\\platform-tools\\chromedriver.exe");
+		
+		URL url=new URL("http://127.0.0.1:4723/wd/hub");
+		driver=new AndroidDriver(url,caps);
+
+	}
+	
+	@Test //scroll down
+	public void sampleTest() throws InterruptedException {
+		System.out.println("Testinggggggg...");
+		Thread.sleep(18000);
+		driver.get("https://traveler.jalasoft.com/home");
+		Thread.sleep(18000);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,1000)", "");
+		Thread.sleep(18000);
+	}
+	
+	@AfterTest
+	public void teardown() {
+		driver.close();
+		driver.quit();
+	}
+}

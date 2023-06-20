@@ -1,0 +1,40 @@
+package appium006;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import io.appium.java_client.MobileBy;
+
+public class Tests extends AppiumTest006{
+	String desiertoUyuni = "El desierto de Sal más grande del Mundo";
+	
+	@Test
+	public void testOne() throws InterruptedException {
+		System.out.println("Verify that as user then I can go to details for the first suggestion");
+		Thread.sleep(4000);
+		driver.get("https://traveler.jalasoft.com/home");
+		Thread.sleep(4000);
+		
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@bounds='[68,793][1012,1566]']")));
+//		driver.findElement(By.xpath("//android.view.View[@bounds='[68,793][1012,1566]']"));
+		String detailText = driver.findElement(By.xpath("//android.view.View[@bounds='[68,793][1012,1566]']")).getText();
+		System.out.println(detailText);
+		Assert.assertTrue(detailText.contains(desiertoUyuni));
+		System.out.println("detailText");
+		
+		driver.findElement(By.xpath("//android.view.View[@bounds='[68,793][1012,1566]']")).click();
+		Thread.sleep(4000);
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@bounds='[159,1065][907,1233]']")));
+		String detailText1 = driver.findElement(By.xpath("//android.widget.TextView[@bounds='[159,1065][907,1233]']")).getText();
+		System.out.println(detailText1);
+
+        Thread.sleep(3000);
+
+	}
+	
+}

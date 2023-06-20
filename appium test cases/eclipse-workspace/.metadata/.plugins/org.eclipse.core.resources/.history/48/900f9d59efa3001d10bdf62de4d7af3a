@@ -1,0 +1,49 @@
+package appium007;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import io.appium.java_client.MobileBy;
+
+public class Tests extends AppiumTest007 {
+	@Test
+	public void testOne() throws InterruptedException {
+		String tittleText = "El desierto de Sal más grande del Mundo";
+		String detailText = "Al suroeste de Bolivia, en el departamento de Potosí";
+		
+		System.out.println("Verify that as user then I can go to details for the first suggestion that is being displayed at top");
+		Thread.sleep(4000);
+		driver.get("https://traveler.jalasoft.com/home");
+		Thread.sleep(4000);
+		
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[contains(@text, 'El desierto de Sal más grande del Mundo')]")));
+        String detailTextfromCell = driver.findElement(By.xpath("//android.view.View[contains(@text, 'El desierto de Sal más grande del Mundo')]")).getText();
+        System.out.println("111");
+        System.out.println(detailTextfromCell);
+//		Assert.assertTrue(detailTextfromCell.contains(tittleText));
+		driver.findElement(By.xpath("//android.view.View[contains(@text, tittleText)]")).click();
+		Thread.sleep(3000);
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[contains(@text, detailText)]")));
+		String detailText1 = driver.findElement(By.xpath("//android.widget.TextView[contains(@text, detailText)]")).getText();
+        System.out.println("222");
+        System.out.println(detailText1);
+//		Assert.assertTrue(detailText1.contains(detailText));
+        Thread.sleep(3000);
+		driver.findElement(By.xpath("//android.widget.TextView[contains(@text, '')]")).click();
+        Thread.sleep(3000);
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[contains(@text, tittleText)]")));
+		String detailText2 = driver.findElement(By.xpath("//android.view.View[contains(@text, tittleText)]")).getText();
+        System.out.println("333");
+        System.out.println(detailText2);
+//		Assert.assertTrue(detailText2.contains(tittleText));
+	}
+
+
+	
+
+}

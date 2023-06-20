@@ -1,0 +1,66 @@
+package appium006;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import io.appium.java_client.MobileBy;
+
+public class Tests extends AppiumTest006{
+	
+	@Test
+	public void testOne() throws InterruptedException {
+		String tittleText = "El desierto de Sal más grande del Mundo";
+		String detailText = "Al suroeste de Bolivia, en el departamento de Potosí";
+		
+		System.out.println("Verify that as user then I can go to details for the first suggestion that is being displayed at top");
+		Thread.sleep(4000);
+		driver.get("https://traveler.jalasoft.com/home");
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@bounds='[68,793][1012,1566]']")));
+		String detailTextfromCell = driver.findElement(By.xpath("//android.view.View[@bounds='[68,793][1012,1566]']")).getText();
+		Assert.assertTrue(detailTextfromCell.contains(tittleText));
+		driver.findElement(By.xpath("//android.view.View[@bounds='[68,793][1012,1566]']")).click();
+		Thread.sleep(4000);
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@bounds='[159,1065][907,1233]']")));
+		String detailText1 = driver.findElement(By.xpath("//android.widget.TextView[@bounds='[79,1549][1012,2138]']")).getText();
+		Assert.assertTrue(detailText1.contains(detailText));
+        Thread.sleep(3000);
+		driver.findElement(By.xpath("//android.widget.TextView[@bounds='[33,391][104,455]']")).click();
+        Thread.sleep(3000);
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@bounds='[68,793][1012,1566]']")));
+		String detailText2 = driver.findElement(By.xpath("//android.view.View[@bounds='[68,793][1012,1566]']")).getText();
+		Assert.assertTrue(detailText2.contains(tittleText));
+	}
+
+	@Test
+	public void testTwo() throws InterruptedException {
+		String tittleText = "Pubs - Discotecas La Paz  La Paz";
+		String detailText = "Pubs - Discotecas La Paz  La Paz";
+
+		System.out.println("Verify that as user then I can go to details for the first suggestion that is being displayed in the grid");
+		Thread.sleep(4000);
+		driver.get("https://traveler.jalasoft.com/home");
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@bounds='[77,1857][508,2138]']")));
+		System.out.println("asdfasdfasdfasdfasdfasf121212122222");
+		String detailTextfromCell = driver.findElement(By.xpath("//android.view.View[@bounds='[77,1857][508,2138]']")).getText();
+		System.out.println("asdfasdfasdfasdfasdfasf1111111");
+		Assert.assertTrue(detailTextfromCell.contains(tittleText));
+		driver.findElement(By.xpath("//android.view.View[@bounds='[77,1857][508,2138]']")).click();
+		System.out.println("asdfasdfasdfasdfasdfasf");
+		Thread.sleep(4000);
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.TextView[@bounds='[159,1065][852,1186]']")));
+		String detailText1 = driver.findElement(By.xpath("//android.widget.TextView[@bounds='[159,1065][852,1186]']")).getText();
+		Assert.assertTrue(detailText1.contains(detailText));
+        Thread.sleep(3000);
+		driver.findElement(By.xpath("//android.widget.TextView[@bounds='[33,391][104,455]']")).click();
+        Thread.sleep(3000);
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.view.View[@bounds='[77,1857][508,2138]']")));
+		String detailText2 = driver.findElement(By.xpath("//android.view.View[@bounds='[77,1857][508,2138]']")).getText();
+		Assert.assertTrue(detailText2.contains(tittleText));
+	}
+	
+}
